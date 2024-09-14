@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block contents%}
+<div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Converging Blockchain and Machine Learning for Healthcare</h1>
+      <p>The power of machine learning in understanding the patterns in data, analyzing and making decisions, has shown its importance in various sectors. Machine Learning requires reasonable amount of data to make accurate decisions. Data sharing and reliability of data is very crucial in machine learning in order to improve its accuracy. The decentralized database in Blockchain Technology emphasizes on data sharing. The consensus in Blockchain technology makes sure that data is legitimate and secured. The convergence of these two technologies can give highly accurate results in terms of machine learning with the security and reliability of Blockchain Technology. This paper gives an overview of how combining these two technologies can help in healthcare sectors.  </p>
+      <p><a class="btn btn-primary btn-lg" href="https://ieeexplore.ieee.org/document/8701230" role="button">Learn more &raquo;</a></p>
+    </div>
+  </div>
+  
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+     
+        <div class="col-md-4">
+            <h2>Patient Registrations Here</h2>
+            <p><form method="POST" action="{% url 'patientregister' %}">
+                {% csrf_token %}
+                <table>
+                    <tr><td>Patient Name</td><td>{{form.name}}</td></tr>
+                    <tr><td>Login ID</td><td>{{form.loginid}}</td></tr>
+                    <tr><td>Password</td><td>{{form.password}}</td></tr>
+                    <tr><td>Mobile</td><td>{{form.mobile}}</td></tr>
+                    <tr><td>email</td><td>{{form.email}}</td></tr>
+                    <tr><td>Locality</td><td>{{form.locality}}</td></tr>
+                    <tr><td>Address</td><td>{{form.address}}</td></tr>
+                    <tr><td>City</td><td>{{form.city}}</td></tr>
+                    <tr><td>State</td><td>{{form.state}}</td></tr>
+                    <tr><td></td><td>{{form.authkey}}</td></tr>
+                    <tr><td></td><td>{{form.status}}</td></tr>
+                    
+                    <tr><td><button  class="btn btn-outline-success my-2 my-sm-0" type="submit" style = "margin-left:20%;">Register</button></td></tr>
+                    <center>
+                        {% if messages %}
+                               {% for message in messages %}
+                                  <font color='GREEN'> {{ message }}</font>
+                               {% endfor %}
+                           {% endif %}
+                           </center>
+                </table>
+                
+            </form>  </p><a class="nav-link" href="{% url 'patient' %}">Patients Login</a>
+           
+          </div>
+        
+      </div>
+     
+      
+    </div>
+{% endblock %}

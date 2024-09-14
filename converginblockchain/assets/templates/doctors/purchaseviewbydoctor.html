@@ -1,0 +1,78 @@
+{% extends 'doctorbase.html' %}
+
+{% block contents %}
+
+<style>
+table {
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 1px solid black;
+ 
+}
+textarea {
+  font-size: 13px;
+  color:darkblue;
+}
+</style>
+
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <h2>Priscription Purchase View </h2>
+    <h3>Logged Doctor is {{ request.session.loggeddoc }}</h3>
+    <table border="2px" >
+            <tr>
+                <th style="color:darkblue">S.No</th>
+                <th style="color:darkblue">Patient ID</th>
+                <th style="color:darkblue">Patient Name</th>
+                <th style="color:darkblue">Email</th>
+                <th style="color:darkblue">Mobile</th>
+                <th style="color:darkblue">city</th>
+                <th style="color:darkblue">diseasname</th>
+                <th style="color:darkblue">descriptions</th>               
+                <th style="color:darkblue">price</th>
+                <th style="color:darkblue">prescription1</th>
+                <th style="color:darkblue">prescription2</th>
+                <th style="color:darkblue">prescription3</th>
+                <th style="color:crimson">respdate</th>
+                
+                
+        
+            </tr>
+            {% for i in object %}
+            <tr>
+            <td style="color:brown">{{forloop.counter}}</td>
+            <td style="color:darkolivegreen">{{i.patientid}}</td>
+            <td style="color:brown">{{i.patinetname}}</td>
+            <td style="color:brown">{{i.email}}</td>
+            <td style="color:brown">{{i.mobile}}</td>
+            <td style="color:brown">{{i.city}}</td>
+            <td style="color:brown">{{i.diseasname}}</td>
+            <td style="color:brown;white-space: nowrap;"><textarea>{{i.descriptions}}</textarea></td>
+            <td style="color:brown">{{i.price}}</td>
+            <td style="color:brown;white-space: nowrap;">{{i.prescription1}}</td>
+            <td style="color:brown;white-space: nowrap;">{{i.prescription2}}</td>
+            <td style="color:brown;white-space: nowrap;">{{i.prescription3}}</td>
+            
+            <td style="color:brown">{{i.respdate}}</td>
+            
+            
+            
+            {% endfor %}
+            
+        </table>
+    
+    <div class="row">
+      <div class="col-md-4">
+        
+        <p>
+          
+           
+        </p>
+        
+      </div>
+     
+      
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block contents%}
+<div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Converging Blockchain and Machine Learning for Healthcare</h1>
+      <p>The power of machine learning in understanding the patterns in data, analyzing and making decisions, has shown its importance in various sectors. Machine Learning requires reasonable amount of data to make accurate decisions. Data sharing and reliability of data is very crucial in machine learning in order to improve its accuracy. The decentralized database in Blockchain Technology emphasizes on data sharing. The consensus in Blockchain technology makes sure that data is legitimate and secured. The convergence of these two technologies can give highly accurate results in terms of machine learning with the security and reliability of Blockchain Technology. This paper gives an overview of how combining these two technologies can help in healthcare sectors.  </p>
+      <p><a class="btn btn-primary btn-lg" href="https://ieeexplore.ieee.org/document/8701230" role="button">Learn more &raquo;</a></p>
+    </div>
+  </div>
+  
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Patient Login</h2>
+        <p>
+            <form action="{% url 'patientlogincheck' %}" class="form-inline my-2 my-lg-0" method="POST">
+                {% csrf_token %}
+                <input name="username" class="form-control mr-sm-2" type="text" placeholder="User Login Id" aria-label="Search"><br/>
+                <input name="password" class="form-control Password" type="password" placeholder="Password" aria-label="Search"><br/>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+              </form>
+              <center>
+                  {% if messages %}
+                         {% for message in messages %}
+                            <font color='RED'> {{ message }}</font>
+                         {% endfor %}
+                     {% endif %}
+                     </center>
+              <a class="nav-link" href="{% url 'patientregister' %}">Patients Register</a>
+        </p>
+        
+      </div>
+     
+      
+    </div>
+{% endblock %}

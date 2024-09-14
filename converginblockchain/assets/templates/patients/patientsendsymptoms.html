@@ -1,0 +1,44 @@
+{% extends 'patientbase.html' %}
+
+{% block contents %}
+
+  
+  <div class="container">
+    <!-- Example row of columns -->
+    <h2>Patient Diseas Page</h2>
+    <h3>Logged user is {{ request.session.loggeduser }}</h3>
+    <form action="{% url 'patientsymtomsanalysis' %}" method="POST" >
+        {% csrf_token %}
+        <h4 style="color: crimson">Enter How you feeling Symptoms seperated with commos(,)</h4><br/>
+        <textarea name="symptoms" rows="5" cols="70" required></textarea>
+        <input type="hidden" name="id" value="{{request.session.userid}}">
+        <br/>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Send</button>
+              </form>
+              <center>
+                  {% if messages %}
+                         {% for message in messages %}
+                            <font color='darkblue'> {{ message }}</font>
+                         {% endfor %}
+                     {% endif %}
+                     </center>
+    <div class="row">
+      
+
+        
+        <p>
+        Note:
+        <ul>
+          <li>The Dataset is created for sample collections</li>
+          <li>Give your sysmptoms in the above textarea each sysmptoms seperated by commos</li>
+            Ex: Tingling,impulsivity,Itching,nausea ......... etc
+          <li>Our analysis will show you the results asap</li> 
+        </ul>  
+           
+        </p>
+        
+      
+     
+      
+    </div>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'adminbase.html' %}
+
+{% block contents %}
+
+  
+  <div class="container">
+    <!-- Example row of columns -->
+    <h2>Admin Home Page</h2>
+    <table border="2px" >
+            <tr>
+                <th style="color: darkblue">S.No</th>
+                <th style="color: darkblue">Doctor ID</th>
+                <th style="color:darkblue">Name on Card</th>
+                <th style="color:darkblue">CVV</th>
+                <th style="color:darkblue">Card Number</th>
+                <th style="color:darkblue">Expire Date</th>
+                <th style="color:darkblue">Transaction Id</th>
+                <th style="color:darkblue">Price </th>
+                <th style="color:darkblue">Ledger Ammount</th>                
+               
+                
+        
+            </tr>
+            {% for i in object %}
+            <tr>
+            <td style="color:brown">{{forloop.counter}}</td>
+            <td style="color:darkolivegreen">{{i.docid}}</td>
+            <td style="color:brown">{{i.nameoncard}}</td>
+            <td style="color:brown">{{i.cvv}}</td>
+            <td style="color:brown">{{i.cardnumber}}</td>
+            <td style="color:brown">{{i.expiredate}}</td>
+            <td style="color:brown">{{i.tranxid}}</td>
+            <td style="color:brown">{{i.price}}</td>
+            <td style="color:brown">{{i.ledgerbalance}}</td>
+            
+            {% endfor %}
+            
+        </table>
+        <h3>Total Ledger Balance <font style="color: blueviolet">{{dph.ledbalance}}</font> </h3><br/>
+        <h3>Last Transaction Details </h3>
+      <table border="2">
+        <tr>
+                <th style="color:blueviolet">S.No</th>
+                <th style="color: crimson">Doctor ID</th>
+                <th style="color:darkblue">Name on Card</th>
+                <th style="color:darkblue">CVV</th>
+                <th style="color:darkblue">Card Number</th>
+                <th style="color:darkblue">Expire Date</th>
+                <th style="color:darkblue">Transaction Id</th>
+                <th style="color:darkblue">Price </th>
+                <th style="color:darkblue">Ledger Ammount</th>                
+               
+                
+        
+            </tr>
+           
+            <tr>
+            <td style="color:brown">1</td>
+            <td style="color:darkolivegreen">{{dpdet.docid}}</td>
+            <td style="color:crimson">{{dpdet.nameoncard}}</td>
+            <td style="color:crimson">{{dpdet.cvv}}</td>
+            <td style="color:crimson">{{dpdet.cardnumber}}</td>
+            <td style="color:crimson">{{dpdet.expiredate}}</td>
+            <td style="color:crimson">{{dpdet.tranxid}}</td>
+            <td style="color:crimson">{{dpdet.price}}</td>
+            <td style="color:crimson">{{dpdet.ledgerbalance}}</td>
+            
+            </tr>
+            
+        </table>
+
+    <ol>
+            <li>Machine learning has been extensively used to benefit healthcare. Machine Learning can be used in identification of Treatment, give personalized suggestion to Patient, Outbreak Prediction etc..  </li>
+            <li>User can get disease summary on the basis of symptoms entered. Tokenization, removal of stop words and stemming are used as preprocessing. Many techniques have been done in this area which include SVM classifier, Naive Bayes and Decision Trees. </li>
+            <li>The best result obtained has the accuracy percentage of 98.51%. The machine learning algorithm can also give lifestyle suggestion to Patient on the basis of current medical situation and medical history.  </li>
+            <li>Themachine learning models can be trained to predict future outcomes. Neural Network with SVM was used to predict outbreaks of malaria in Maharashtra State. The model took rainfall, temperature, other reported cases in the area and other medical details to predict the outcome.  </li>
+            <li>The major hindrance in machine learning applications is data acquisition. Researchers have to do a lot of struggles to get appropriate data. Lack of proper data leads to inefficient models that reduces the accuracy percentage. </li>
+    </ol>
+    <div class="row">
+      <div class="col-md-4">
+        
+        <p>
+          
+           
+        </p>
+        
+      </div>
+     
+      
+    </div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'doctorbase.html' %}
+
+{% block contents %}
+
+<style>
+table {
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 1px solid black;
+ 
+}
+textarea {
+  font-size: 13px;
+  color:darkblue;
+}
+</style>
+
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <h2>Patient sysmptoms View </h2>
+    <h3>Logged Doctor is {{ request.session.loggeddoc }}</h3>
+    <table border="2px" >
+            <tr>
+                <th style="color: darkblue">S.No</th>
+                <th style="color: darkblue">Patient ID</th>
+                <th style="color:darkblue">Patient Name</th>
+                <th style="color:darkblue">Email</th>
+                <th style="color:darkblue">Sysmptoms</th>
+                <th style="color:darkblue">Dieses</th>
+                <th style="color:darkblue">Description</th>
+                <th style="color:darkblue">Timestamp</th>               
+                <th style="color:darkblue">Analysis</th>
+                
+        
+            </tr>
+            {% for i in object %}
+            <tr>
+            <td style="color:brown">{{forloop.counter}}</td>
+            <td style="color:darkolivegreen">{{i.patintid}}</td>
+            <td style="color:brown">{{i.patinetname}}</td>
+            <td style="color:brown">{{i.email}}</td>
+            <td style="color:brown">{{i.patinetallsymptoms}}</td>
+            <td style="color:brown">{{i.diseasname}}</td>
+            <td style="color:brown;white-space: nowrap;"  ><textarea>{{i.descriptions}}</textarea></td>
+            <td style="color:brown">{{i.createdon}}</td>
+            
+            
+            {% if i.status == 'waiting' %}                      
+            <td> <a class="btn-link" href="/DoctorsSendPriscription/?id={{ i.id }}&&patientid={{i.patintid}}" >Send Priscription</a></td>            
+            {% else %}
+            <td> Sent</td>
+            {% endif %}        
+            </tr>
+            {% endfor %}
+            
+        </table>
+    
+    <div class="row">
+      <div class="col-md-4">
+        
+        <p>
+          
+           
+        </p>
+        
+      </div>
+     
+      
+    </div>
+{% endblock %}

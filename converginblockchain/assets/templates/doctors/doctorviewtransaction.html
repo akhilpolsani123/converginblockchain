@@ -1,0 +1,94 @@
+{% extends 'doctorbase.html' %}
+
+{% block contents %}
+
+<style>
+table {
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <h2>Doctors Prisciption Transaction</h2>
+    <h3>Logged Doctor  is {{ request.session.loggeddoc }}</h3>
+    <table border="2px" >
+            <tr>
+                <th style="color: darkblue">S.No</th>
+                <th style="color: darkblue">Doctor ID</th>
+                <th style="color:darkblue">Name on Card</th>
+                <th style="color:darkblue">CVV</th>
+                <th style="color:darkblue">Card Number</th>
+                <th style="color:darkblue">Expire Date</th>
+                <th style="color:darkblue">Transaction Id</th>
+                <th style="color:darkblue">Price </th>
+                <th style="color:darkblue">Ledger Ammount</th>                
+               
+                
+        
+            </tr>
+            {% for i in object %}
+            <tr>
+            <td style="color:brown">{{forloop.counter}}</td>
+            <td style="color:darkolivegreen">{{i.docid}}</td>
+            <td style="color:brown">{{i.nameoncard}}</td>
+            <td style="color:brown">{{i.cvv}}</td>
+            <td style="color:brown">{{i.cardnumber}}</td>
+            <td style="color:brown">{{i.expiredate}}</td>
+            <td style="color:brown">{{i.tranxid}}</td>
+            <td style="color:brown">{{i.price}}</td>
+            <td style="color:brown">{{i.ledgerbalance}}</td>
+            
+            {% endfor %}
+            
+        </table>
+        <h3>Total Ledger Balance <font style="color: blueviolet">{{dph.ledbalance}}</font> </h3><br/>
+        <h3>Last Transaction Details </h3>
+      <table>
+        <tr>
+                <th style="color:blueviolet">S.No</th>
+                <th style="color: crimson">Doctor ID</th>
+                <th style="color:darkblue">Name on Card</th>
+                <th style="color:darkblue">CVV</th>
+                <th style="color:darkblue">Card Number</th>
+                <th style="color:darkblue">Expire Date</th>
+                <th style="color:darkblue">Transaction Id</th>
+                <th style="color:darkblue">Price </th>
+                <th style="color:darkblue">Ledger Ammount</th>                
+               
+                
+        
+            </tr>
+           
+            <tr>
+            <td style="color:brown">1</td>
+            <td style="color:darkolivegreen">{{dpdet.docid}}</td>
+            <td style="color:crimson">{{dpdet.nameoncard}}</td>
+            <td style="color:crimson">{{dpdet.cvv}}</td>
+            <td style="color:crimson">{{dpdet.cardnumber}}</td>
+            <td style="color:crimson">{{dpdet.expiredate}}</td>
+            <td style="color:crimson">{{dpdet.tranxid}}</td>
+            <td style="color:crimson">{{dpdet.price}}</td>
+            <td style="color:crimson">{{dpdet.ledgerbalance}}</td>
+            
+            
+            
+        </table>
+
+    <div class="row">
+      <div class="col-md-4">
+        
+        <p>
+          
+           
+        </p>
+        
+      </div>
+     
+      
+    </div>
+{% endblock %}

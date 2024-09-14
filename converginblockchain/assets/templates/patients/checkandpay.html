@@ -1,0 +1,129 @@
+{% extends 'patientbase.html' %}
+
+{% block contents %}
+
+<style>
+ 
+</style>
+
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <h2>Doctor Response </h2>
+    <h3>Logged Patient is {{ request.session.loggeduser }}</h3>
+    <form action="{% url 'transactionmanagement' %}" class="form-inline my-2 my-lg-0" method="POST">
+            {% csrf_token %}
+           
+    <table border="2px" >
+      <input type="hidden" name="docid" value="{{object.docid}}"/>
+            <tr>   <td style="color:darkblue">Doctor Name</td><td style="color:rgb(13, 111, 156)"><input type="text" name="doctorname" value="{{object.doctorname}}" readonly></td></tr>
+            <tr>   <td style="color:darkblue">Patient ID</td><td style="color:darkolivegreen"><input type="text" name="patientid" value="{{object.patientid}}" readonly></td></tr>
+            <tr>   <td style="color:darkblue">Patient Name</td><td style="color:brown"><input type="text" name="patientname" value="{{object.patinetname}}" readonly></td></tr>
+            <tr>   <td style="color:darkblue">Email</td><td style="color:brown">{{object.email}}</td></tr>
+            <tr>   <td style="color:darkblue">Sysmptoms</td><td style="color:brown">{{object.patinetallsymptoms}}</td></tr>
+            <tr>   <td style="color:darkblue">Dieses</td><td style="color:brown"><input type="text" name="dieses" value="{{object.diseasname}}"></td></tr>
+            <tr>   <td style="color:darkblue">Description</td><td style="color:brown">{{object.descriptions}}</td></tr>
+            <tr>   <td style="color:darkblue">Request Date</td><td style="color:brown">{{object.reqdate}}</td></tr>
+            <tr>   <td style="color:darkblue">Response Date</td><td style="color:brown">{{object.respdate}}</td></tr>
+            
+            <tr>   <td style="color:darkblue">Analysis status</td><td style="color:red">{{object.status}}</td></tr>
+            <tr>   <td style="color:darkblue">Sysmptoms ID</td><td style="color:darkolivegreen"><input type="text" name="sysid" value="{{object.sysid}}" readonly></td></tr>
+            <tr>   <td style="color:darkblue">Price</td><td style="color:brown"><input name="price" class="form-control mr-sm-2" type="text" placeholder="Price" value="{{object.price}}" readonly aria-label="Search"><br/></td></tr>
+            
+            {% if object.status == 'waiting' %}                      
+            
+            <tr><td style="color:darkblue">Name On Card </td> <td><input type="text" name="nameoncard" class="form-control" id="owner" required="True">  </td> </tr>
+            <tr><td style="color:darkblue">CVV</td><td><input type="text" name="cvv" pattern="[123456789][1-9]{2}" title="Please Enter valid CVV number" class="form-control" id="cvv" required="True"> </td> </tr> 
+            <tr><td style="color:darkblue"> Card Number </td><td> <input type="text" name="cardnumber" pattern="[0123456789][0-9]{15}" title="Please Enter Valid Card Number 0000-0000-0000-0000" class="form-control" id="cardNumber" required="True"> </td> </tr> 
+            <tr>
+              <td style="color:darkblue">Expiration Date </td>
+            <td style="color:darkblue"><select name="month" required="True">
+                <option value="January">January</option>
+                <option value="February">February </option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
+            <select name="year" required="True">
+                <option value="2020"> 2020</option>
+                <option value="2021"> 2021</option>
+                <option value="2022"> 2022</option>
+                <option value="2023"> 2023</option>
+                <option value="2024"> 2024</option>
+                <option value="2025"> 2025</option>
+            </select> </td>
+           </tr> 
+         
+            <tr><td></td><td><button class="btn btn-outline-success my-2 my-sm-0" type="submit">buy</button></td></tr>                           
+             {% else %}
+             <tr>   <td style="color:darkblue">Priscription 1</td><td style="color:brown"><textarea name="priscription1" rows="4" cols="50">{{object.prescription1}}</textarea></td></tr>
+             <tr>   <td style="color:darkblue">Priscription 2</td><td style="color:brown"><textarea name="priscription2" rows="4" cols="50">{{object.prescription2}}</textarea></td></tr>
+             <tr>   <td style="color:darkblue">Priscription 3</td><td style="color:brown"><textarea name="priscription3" rows="4" cols="50">{{object.prescription3}}</textarea></td></tr>
+             
+             {% endif %}     
+            
+           
+            
+             
+             
+                   
+        </table>
+        </form>
+
+        <ol>
+            <p>Note</p>
+            <li>The Description has been generated from our Onlline NLTK Library </li>
+            <li>The System generated is not exact result</li>
+            <li>This is for testing perspective</li>
+        </ol>  
+        <p class="examples-note">Here are some dummy credit card numbers and CVV codes so you can test out the form:</p>
+        <div class="examples">
+          <div class="table-responsive">
+              <table class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th>Type</th>
+                          <th>Card Number</th>
+                          <th>Security Code</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>Visa</td>
+                          <td>4716108999716531</td>
+                          <td>257</td>
+                      </tr>
+                      <tr>
+                          <td>Master Card</td>
+                          <td>5281037048916168</td>
+                          <td>043</td>
+                      </tr>
+                      <tr>
+                          <td>American Express</td>
+                          <td>342498818630298</td>
+                          <td>3156</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+    <div class="row">
+      <div class="col-md-4">
+        
+        <p>
+          
+           
+        </p>
+        
+      </div>
+     
+      
+    </div>
+{% endblock %}

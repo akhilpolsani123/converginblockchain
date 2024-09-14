@@ -1,0 +1,66 @@
+{% extends 'doctorbase.html' %}
+
+{% block contents %}
+
+<style>
+
+</style>
+
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <h2>Write Priscription </h2>
+    <h3>Logged Doctor is {{ request.session.loggeddoc }}</h3>
+    <form action="{% url 'DoctorPriscription' %}" class="form-inline my-2 my-lg-0" method="POST">
+            {% csrf_token %}
+    <table border="2px" >
+            {% for i in object %}
+
+            <tr>   <td style="color:darkblue">Patient ID</td><td style="color:darkolivegreen"><input type="text" name="patientid" value="{{i.patintid}}" readonly></td></tr>
+            <tr>   <td style="color:darkblue">Patient Name</td><td style="color:brown">{{i.patinetname}}</td></tr>
+            <tr>   <td style="color:darkblue">Email</td><td style="color:brown">{{i.email}}</td></tr>
+            <tr>   <td style="color:darkblue">Sysmptoms</td><td style="color:brown">{{i.patinetallsymptoms}}</td></tr>
+            <tr>   <td style="color:darkblue">Dieses</td><td style="color:brown">{{i.diseasname}}</td></tr>
+            <tr>   <td style="color:darkblue">Description</td><td style="color:brown">{{i.descriptions}}</td></tr>
+            <tr>   <td style="color:darkblue">Timestamp</td><td style="color:brown">{{i.createdon}}</td></tr>
+            <tr>   <td style="color:darkblue">Analysis</td><td style="color:brown">{{i.status}}</td></tr>
+            <tr>   <td style="color:darkblue">Priscription 1</td><td style="color:brown"><textarea name="priscription1" rows="4" cols="50"></textarea></td></tr>
+            <tr>   <td style="color:darkblue">Priscription 2</td><td style="color:brown"><textarea name="priscription2" rows="4" cols="50"></textarea></td></tr>
+            <tr>   <td style="color:darkblue">Priscription 3</td><td style="color:brown"><textarea name="priscription3" rows="4" cols="50"></textarea></td></tr>
+            <tr>   <td style="color:darkblue">Price</td><td style="color:brown"><input name="price" class="form-control mr-sm-2" type="text" placeholder="Price " aria-label="Search"><br/></td></tr>
+            <tr>   <td style="color:darkblue">Sysmptoms ID</td><td style="color:darkolivegreen"><input type="text" name="sysid" value="{{i.id}}" readonly></td></tr>
+            
+            
+            {% for k in object1 %}
+            
+             {% if k.authkey != 'waiting' %}                      
+             <tr><td style="color: darkblue">Authentication Key</td><td style="color:darkolivegreen">{{k.authkey}}</td></tr> 
+             <tr><td></td><td><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Send Priscription</button></td></tr>                           
+             {% else %}
+             <tr><td style="color: darkblue">Patient ID</td><td style="color:darkolivegreen">{{k.authkey}}</td></tr> 
+             {% endif %}        
+             {% endfor %}
+            {% endfor %}
+        </table>
+        </form>
+
+        <ol>
+            <p>Note</p>
+            <li>The Description has been generated from our Onlline NLTK Library </li>
+            <li>The System generated is not exact result</li>
+            <li>This is for testing perspective</li>
+        </ol>  
+    
+    <div class="row">
+      <div class="col-md-4">
+        
+        <p>
+          
+           
+        </p>
+        
+      </div>
+     
+      
+    </div>
+{% endblock %}

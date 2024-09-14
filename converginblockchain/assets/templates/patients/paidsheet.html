@@ -1,0 +1,43 @@
+{% extends 'patientbase.html' %}
+
+{% block contents %}
+
+  
+  <div class="container">
+    <!-- Example row of columns -->
+    <h2>Patient  Home Page</h2>
+    <h3>Logged user is {{ request.session.loggeduser }}</h3>
+    
+     Transaction ID = {{object.tranxid}} <br/>
+     Ledger Balance = {{object.ledbala}}
+   
+
+           <center>
+            {% if messages %}
+                   {% for message in messages %}
+                      <font color='darkblue'> {{ message }}</font>
+                   {% endfor %}
+            {% endif %}
+               </center>
+              
+
+    <ol>
+            <li>It is the append only distributed system which keeps the track of all the transactions that take place in a blockchain network. It is maintained by each peer in the blockchain network </li>
+            <li>User can get disease summary on the basis of symptoms entered. Tokenization, removal of stop words and stemming are used as preprocessing. Many techniques have been done in this area which include SVM classifier, Naive Bayes and Decision Trees. </li>
+            <li>The best result obtained has the accuracy percentage of 98.51%. The machine learning algorithm can also give lifestyle suggestion to Patient on the basis of current medical situation and medical history.  </li>
+            <li>Themachine learning models can be trained to predict future outcomes. Neural Network with SVM was used to predict outbreaks of malaria in Maharashtra State. The model took rainfall, temperature, other reported cases in the area and other medical details to predict the outcome.  </li>
+            <li>The major hindrance in machine learning applications is data acquisition. Researchers have to do a lot of struggles to get appropriate data. Lack of proper data leads to inefficient models that reduces the accuracy percentage. </li>
+    </ol>
+    <div class="row">
+      <div class="col-md-4">
+        
+        <p>
+          
+           
+        </p>
+        
+      </div>
+     
+      
+    </div>
+{% endblock %}
